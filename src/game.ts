@@ -4,13 +4,25 @@ export class SimpleRotate implements ISystem {
   update() {
       const transform = zf3.getComponent(Transform)
       // mutate the rotation
-      transform.rotate(Vector3.Up(), 20)
+      transform.rotate(Vector3.Up(), 10)
     }
 }
 engine.addSystem(new SimpleRotate())
 
-
 let XBillboard = new Billboard(false, true ,false)
+
+let canvas = new UICanvas()
+
+function spawnText(x: string) {
+	const message = new UIText(canvas)
+	message.value = x
+	message.fontSize = 15
+	message.width = 120
+	message.height = 30
+	message.vAlign = "bottom"
+	message.positionX = -80
+	return canvas
+}
 
 let stage = new Entity()
 stage.addComponent(new GLTFShape("art/stage/scene.gltf"))
@@ -21,6 +33,11 @@ stage.addComponent(
   })
 )
 stage.addComponent(XBillboard)
+stage.addComponent(
+  new OnClick(() => {
+	  canvas = spawnText("This is Samsung Z3 Flip")
+  })
+)
 engine.addEntity(stage)
 
 let zf3 = new Entity()
