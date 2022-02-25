@@ -35,7 +35,7 @@ stage.addComponent(
 stage.addComponent(XBillboard)
 stage.addComponent(
   new OnClick(() => {
-	  canvas = spawnText("This is Samsung Z3 Flip")
+    openExternalURL("https://www.samsung.com/in/smartphones/galaxy-z-flip3-5g/buy/")
   })
 )
 engine.addEntity(stage)
@@ -46,6 +46,11 @@ zf3.addComponent(
   new Transform({
     position: new Vector3(8, 5, 8),
     scale: new Vector3(5, 5, 5),
+  })
+)
+zf3.addComponent(
+  new OnPointerDown(() => {
+	canvas = spawnText("This is Samsung Galaxy Z Flip3.")
   })
 )
 engine.addEntity(zf3)
