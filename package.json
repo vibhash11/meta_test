@@ -1,5 +1,5 @@
 {
-  "name": "Office Scene",
+  "name": "4f5b51df-8fd9-4991-ae48-eac55551dcc1",
   "version": "1.0.0",
   "description": "My new Decentraland project",
   "scripts": {
@@ -14,8 +14,7 @@
     "decentraland-ecs": "latest"
   },
   "dependencies": {
-    "decentraland": "^3.9.0",
-    "decentraland-builder-scripts": "latest",
-    "decentraland-ecs": "latest"
+    "decentraland-ecs": "latest",
+    "decentraland-builder-scripts": "latest"
   }
 }
