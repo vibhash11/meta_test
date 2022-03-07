@@ -2,6 +2,9 @@
   "name": "4f5b51df-8fd9-4991-ae48-eac55551dcc1",
   "version": "1.0.0",
   "description": "My new Decentraland project",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "CI=true dcl start -p ${PORT:=8000}",
     "build": "build-ecs",
@@ -14,7 +17,8 @@
     "decentraland-ecs": "latest"
   },
   "dependencies": {
-    "decentraland-ecs": "latest",
-    "decentraland-builder-scripts": "latest"
+    "decentraland": "^3.9.0",
+    "decentraland-builder-scripts": "latest",
+    "decentraland-ecs": "latest"
   }
 }
