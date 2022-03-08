@@ -24,6 +24,21 @@ function spawnText(x: string) {
 	return canvas
 }
 
+let collision = new Entity()
+let box = new BoxShape()
+box.withCollisions = true
+box.visible = false
+collision.addComponent(box)
+collision.addComponent(XBillboard)
+collision.addComponent(
+  new Transform({
+    position: new Vector3(7, 0, 7),
+    scale: new Vector3(4, 2, 1),
+	rotation: Quaternion.Euler(0, 30, 0),
+  })
+)
+engine.addEntity(collision)
+
 let stage = new Entity()
 stage.addComponent(new GLTFShape("art/stage/scene.gltf"))
 stage.addComponent(
