@@ -70,10 +70,10 @@ tablet3.getComponent(Transform).rotation.set(0, 1, 0, -1);
 
 const walln = new Entity();
 engine.addEntity(walln);
-walln.addComponent(new GLTFShape("models/walls/wall.glb"));
+walln.addComponent(new GLTFShape("models/walls/glass_wall.glb"));
 walln.addComponent(new Transform());
-walln.getComponent(Transform).scale.set(0.8, 1, 0.20);
-walln.getComponent(Transform).position.set(8.0, -0.1, 15);
+walln.getComponent(Transform).scale.set(5.3, 3.5, 1);
+walln.getComponent(Transform).position.set(0.1, 0.1, 16.85);
 
 const wallw = new Entity();
 engine.addEntity(wallw);
@@ -85,25 +85,25 @@ wallw.getComponent(Transform).position.set(-0.8, -0.1, 8);
 
 const walle = new Entity();
 engine.addEntity(walle);
-walle.addComponent(new GLTFShape("models/walls/wall.glb"));
+walle.addComponent(new GLTFShape("models/walls/glass_wall.glb"));
 walle.addComponent(new Transform());
-walle.getComponent(Transform).scale.set(0.8, 1, 0.20);
+walle.getComponent(Transform).scale.set(5.3, 3.5, 1);
 walle.getComponent(Transform).rotation.set(0, 1, 0, 1);
-walle.getComponent(Transform).position.set(15, -0.1, 8);
+walle.getComponent(Transform).position.set(16.8, -0.1, 16);
 
 const walls = new Entity();
 engine.addEntity(walls);
-walls.addComponent(new GLTFShape("models/walls/wall.glb"));
+walls.addComponent(new GLTFShape("models/walls/glass_wall.glb"));
 walls.addComponent(new Transform());
-walls.getComponent(Transform).scale.set(0.7, 1, 0.15);
-walls.getComponent(Transform).position.set(8.8, -0.1, -0.5);
+walls.getComponent(Transform).scale.set(4.6, 3.5, 1);
+walls.getComponent(Transform).position.set(2, 0, 1);
 
 const walls2 = new Entity();
 engine.addEntity(walls2);
-walls2.addComponent(new GLTFShape("models/walls/wall.glb"));
+walls2.addComponent(new GLTFShape("models/walls/glass_wall.glb"));
 walls2.addComponent(new Transform());
-walls2.getComponent(Transform).scale.set(0.1, 0.65, 0.15);
-walls2.getComponent(Transform).position.set(1, 2.5, -0.5);
+walls2.getComponent(Transform).scale.set(0.6, 2.15, 1);
+walls2.getComponent(Transform).position.set(0.2, 3, 1);
 
 const wallt = new Entity();
 engine.addEntity(wallt);
@@ -179,14 +179,6 @@ chair8.addComponent(new Transform());
 chair8.getComponent(Transform).rotation.set(0, 1, 0, 0);
 chair8.getComponent(Transform).position.set(10, 0, 8.75)
 
-const screen = new Entity();
-engine.addEntity(screen);
-screen.addComponent(new GLTFShape("models/screen/screen_collider.glb"));
-screen.addComponent(new Transform());
-screen.getComponent(Transform).scale.set(0.125, 0.125, 0.125);
-screen.getComponent(Transform).position.set(0.5, 5, 7.5);
-screen.getComponent(Transform).rotation.set(0, 10, 0, 10);
-
 const door = new Entity();
 engine.addEntity(door);
 door.addComponent(new GLTFShape("models/door/Puzzle02_Door.glb"));
@@ -209,3 +201,44 @@ door.addComponent(new OnPointerDown((): void => {
         isDoorOpen = false;
     }
 }));
+
+// #1
+const myVideoClip = new VideoClip(
+    "https://multiplatform-f.akamaihd.net/i/multi/april11/sintel/sintel-hd_,512x288_450_b,640x360_700_b,768x432_1000_b,1024x576_1400_m,.mp4.csmil/master.m3u8"
+  )
+  
+  // #2
+const myVideoTexture = new VideoTexture(myVideoClip)
+
+// #3
+const myMaterial = new Material()
+myMaterial.albedoTexture = myVideoTexture
+myMaterial.roughness = 1
+myMaterial.specularIntensity = 0
+myMaterial.metallic = 0
+const screen = new Entity()
+screen.addComponent(new PlaneShape())
+screen.addComponent(new Transform())
+screen.getComponent(Transform).scale.set(8, 4, 1);
+screen.getComponent(Transform).rotation.set(0, 1, 0, 1);
+screen.getComponent(Transform).position.set(0.5, 5, 7.5);
+
+// #4
+screen.addComponent(myMaterial)
+screen.addComponent(
+  new OnPointerDown(() => {
+    myVideoTexture.playing = !myVideoTexture.playing
+  })
+)
+engine.addEntity(screen)
+
+// #5
+myVideoTexture.play()
+
+const logo = new Entity();
+engine.addEntity(logo);
+logo.addComponent(new GLTFShape("models/logo/logo.glb"));
+logo.addComponent(new Transform());
+logo.getComponent(Transform).position.set(1, 5, -6.3);
+logo.getComponent(Transform).scale.set(0.1, 0.1, 0.1);
+logo.getComponent(Transform).rotation.set(0, 1, 0, 0);
