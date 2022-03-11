@@ -1,5 +1,5 @@
 {
-  "name": "dcl-project",
+  "name": "conf-room",
   "version": "1.0.0",
   "description": "My new Decentraland project",
   "scripts": {
@@ -12,8 +12,5 @@
   },
   "devDependencies": {
     "decentraland-ecs": "latest"
-  },
-  "dependencies": {
-    "decentraland": "^3.9.0"
   }
 }
